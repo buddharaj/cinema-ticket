@@ -162,7 +162,7 @@ describe("Test Scenarios for TicketService:-", () => {
         infantTickets,
         childTickets
       )
-    ).toThrow("Invalid ticket request!");
+    ).toThrow("Invalid ticket count!");
   });
   it("Should throw an error when negative tickets are supplied", () => {
     const ticket = new TicketTypeRequest(constants.TICKET_ADULT, -2);
@@ -171,7 +171,7 @@ describe("Test Scenarios for TicketService:-", () => {
       InvalidPurchaseException
     );
     expect(() => ticketService.purchaseTickets(accountId, ticket)).toThrow(
-      "Invalid ticket request!"
+      "Invalid ticket count!"
     );
   });
 
@@ -189,7 +189,7 @@ describe("Test Scenarios for TicketService:-", () => {
       InvalidPurchaseException
     );
     expect(() => ticketService.purchaseTickets(accountId)).toThrow(
-      "Invalid ticket request!"
+      "Atleast one ticket request is expected!"
     );
   });
   it("Should throw an error when wrong ticket is requested - string value in TicketTypeRequest", () => {

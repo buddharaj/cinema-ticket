@@ -38,19 +38,14 @@ export default class TicketService {
       );
     }
     if (!ticketTypeRequests.length) {
-      throw new InvalidPurchaseException("Invalid ticket request!");
+      throw new InvalidPurchaseException(
+        "Atleast one ticket request is expected!"
+      );
     }
 
     const { totalNoOfTickets, totalSeats, totalAmount, adultTickets } =
       this.#handleTicketTypeRequests(ticketTypeRequests);
     console.log(totalNoOfTickets, totalSeats, totalAmount, adultTickets);
-    if (
-      !isPositive(totalNoOfTickets) ||
-      !isPositive(totalSeats) ||
-      !isPositive(totalAmount)
-    ) {
-      throw new InvalidPurchaseException("Invalid ticket request!");
-    }
 
     // check for max tickets cap (25 tickets per request)
     if (totalNoOfTickets > constants.MAX_TICKET_LIMIT) {
@@ -97,6 +92,9 @@ export default class TicketService {
       }
       const ticketType = ticketTypeRequest.getTicketType();
       const ticketCount = ticketTypeRequest.getNoOfTickets();
+      if (!isPositive(ticketCount)) {
+        throw new InvalidPurchaseException("Invalid ticket count!");
+      }
       switch (ticketType) {
         case constants.TICKET_ADULT:
           adultTickets += ticketCount;
