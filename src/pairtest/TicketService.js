@@ -53,7 +53,7 @@ export default class TicketService {
     this.#makePayment(accountId, totalAmountToPay);
     this.#makeBooking(accountId, totalNoOfTickets);
     return {
-      message: "Congratualtion. Successfully booked!",
+      message: "Congratulation! Successfully booked your seat.",
       accountId,
       totalAmountPaid: totalAmountToPay,
       totalNoOfTicketsBooked: totalNoOfTickets,

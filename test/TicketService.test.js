@@ -31,7 +31,7 @@ describe("Test Scenarios for TicketService:-", () => {
     );
     expect(response).toHaveProperty(
       "message",
-      "Congratualtion. Successfully booked!"
+      "Congratulation! Successfully booked your seat."
     );
   });
   it("Should accept a seat reservation request - adult only", () => {
@@ -42,7 +42,7 @@ describe("Test Scenarios for TicketService:-", () => {
     const response = ticketService.purchaseTickets(accountId, adultTickets);
     expect(response).toHaveProperty(
       "message",
-      "Congratualtion. Successfully booked!"
+      "Congratulation! Successfully booked your seat."
     );
   });
   it("Should accept for Infants do not pay for a ticket", () => {
@@ -60,7 +60,7 @@ describe("Test Scenarios for TicketService:-", () => {
       constants.TICKET_COST_ADULT * 2 + constants.TICKET_COST_CHILD * 4;
     expect(response).toHaveProperty(
       "message",
-      "Congratualtion. Successfully booked!"
+      "Congratulation! Successfully booked your seat."
     );
     expect(response).toHaveProperty("totalAmountPaid", expectedTotalAmountPaid);
   });
@@ -77,7 +77,7 @@ describe("Test Scenarios for TicketService:-", () => {
     );
     expect(response).toHaveProperty(
       "message",
-      "Congratualtion. Successfully booked!"
+      "Congratulation! Successfully booked your seat."
     );
     expect(response).toHaveProperty("totalNoOfTicketsBooked", 6);
   });
@@ -94,7 +94,7 @@ describe("Test Scenarios for TicketService:-", () => {
     );
     expect(response).toHaveProperty(
       "message",
-      "Congratualtion. Successfully booked!"
+      "Congratulation! Successfully booked your seat."
     );
   });
   it("Should reject a request with more than 25 tickets at a time", () => {
